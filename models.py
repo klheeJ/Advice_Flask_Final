@@ -6,7 +6,7 @@ import uuid
 ma = Marshmallow()
 db = SQLAlchemy()
 
-class Advice_Collection(db.Model):
+class Advice(db.Model):
     id = db.Column(db.String, primary_key = True)
     advice = db.Column(db.String(500), nullable=False)
 

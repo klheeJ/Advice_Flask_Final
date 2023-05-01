@@ -9,6 +9,7 @@ from .api.routes import api
 app = Flask(__name__)
 CORS(app)
 
+
 app.register_blueprint(api)
 
 app.config.from_object(Config)
