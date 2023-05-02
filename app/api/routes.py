@@ -6,9 +6,10 @@ api = Blueprint('api', __name__, url_prefix='/api')
 @api.route('/advice', methods = ['POST'])
 def create_advice():
     advice = request.json['advice']
+    user_ID = request.json['user_ID']
 
 
-    advice_ = Advice(advice)
+    advice_ = Advice(advice, user_ID)
 
     db.session.add(advice_)
     db.session.commit()
@@ -30,14 +31,15 @@ def get_single_advice(id):
     return jsonify(response)
 
 
-@api.route('/advice/<id>', methods = ['PUT'])
-def update_advice(id):
-    advice_ = Advice.query.get(id)
-    advice_.advice = request.json['advice']
+# @api.route('/advice/<id>', methods = ['PUT'])
+# def update_advice(id):
+#     advice_ = Advice.query.get(id)
+#     advice_.advice = request.json['advice']
+#     advice_.user_ID = request.json['user_ID']
 
-    db.session.commit()
-    response = advice_schema.dump(advice_)
-    return jsonify(response)
+#     db.session.commit()
+#     response = advice_schema.dump(advice_)
+#     return jsonify(response)
 
 @api.route('/advice/<id>', methods = ['DELETE'])
 def delete_advice(id):
