@@ -24,9 +24,9 @@ def get_advice():
     return jsonify(response)
 
 
-@api.route('/advice/<id>', methods = ['GET'])
-def get_single_advice(id):
-    advice_ = Advice.query.get(id)
+@api.route('/advice/<user_ID>', methods = ['GET'])
+def get_single_advice(user_ID):
+    advice_ = Advice.query.filter_by(user_ID=user_ID).all()
     response = advices_schema.dump(advice_)
     return jsonify(response)
 
