@@ -11,7 +11,7 @@ class Advice(db.Model):
     advice = db.Column(db.String(500), nullable=False)
     user_ID = db.Column(db.String(300), nullable=False)
 
-    def __init__(self,advice,id='', user_ID=''):
+    def __init__(self,advice,user_ID,id=''):
         self.id = self.set_id()
         self.advice = advice
         self.user_ID = user_ID
